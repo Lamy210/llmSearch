@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Search &amp; Ask | Local Search</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="spinner" class="spinner hidden"></div>
+  <div class="container">
+    <header>
+      <button id="logoutBtn">Logout</button>
+      <h1>Local Search</h1>
+    </header>
+    <section>
+      <h2>Search</h2>
+      <form id="searchForm">
+        <input id="searchQ" name="q" type="text" placeholder="検索クエリ" required maxlength="256">
+        <button type="submit">Search</button>
+      </form>
+      <pre id="searchResult"></pre>
+    </section>
+    <section>
+      <h2>Ask</h2>
+      <form id="askForm">
+        <input id="askQ" name="q" type="text" placeholder="質問" required maxlength="256">
+        <button type="submit">Ask</button>
+      </form>
+      <pre id="askResult"></pre>
+    </section>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>

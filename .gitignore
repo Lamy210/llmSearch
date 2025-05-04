@@ -1,0 +1,3 @@
+.env
+# .gitignore に追記
+node_modules/

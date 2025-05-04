@@ -1,0 +1,20 @@
+{
+  "name": "llmsearch",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "init": "bun init -y",
+    "dev": "bun run src/index.ts --watch",
+    "debug": "bun run src/index.ts --watch --inspect=0.0.0.0:9229"
+  },
+  "dependencies": {
+    "hono": "^3.0.0",
+    "jsonwebtoken": "^9.0.0",
+    "dotenv": "^16.0.0",
+    "debug": "^4.3.4"
+  },
+  "devDependencies": {
+    "@types/node": "^18.16.1",
+    "bun-types": "*"
+  }
+}

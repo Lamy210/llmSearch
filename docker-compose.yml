@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  model:
+    container_name: llmsearch_model
+    build:
+      context: ./model
+    ports:
+      - "8000:8000"
+
+  app:
+    container_name: llmsearch_app
+    build: .
+    command: sh -c "bun install && bun run src/index.ts --watch --inspect=0.0.0.0:9229"
+    working_dir: /app
+    volumes:
+      - ./:/app:delegated
+    ports:
+      - "3000:3000"
+      - "9229:9229"
+    environment:
+      - JWT_SECRET=${JWT_SECRET}
+      - USERNAME=${USERNAME}
+      - PASSWORD=${PASSWORD}
+      - MODEL_API_URL=http://model:8000
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - model
+    stdin_open: true
+    tty: true
+
+volumes:
+  node_modules:

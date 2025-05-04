@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "noEmit": true,                       // 追加：コードは出力せず型チェックのみ
+    "allowImportingTsExtensions": true,   // .ts 拡張子付きインポートを許可
+    "lib": [
+      "ESNext",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "types": ["bun-types", "node"]
+  },
+  "include": ["src"]
+}
