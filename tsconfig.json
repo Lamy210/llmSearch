@@ -1,4 +1,5 @@
 {
+  "compileOnSave": false,
   "compilerOptions": {
     "target": "ESNext",
     "module": "NodeNext",
@@ -13,8 +14,14 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "allowJs": true,
-    "types": ["bun-types", "node"]
+    "allowJs": true
+    // "types" を指定しないことで不要な型ライブラリ参照を抑制
   },
-  "include": ["src"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "client/src/**/*.ts",
+    "client/src/**/*.d.ts"
+  ],
+  "exclude": ["node_modules", "www"]
 }

@@ -10,10 +10,14 @@ services:
   app:
     container_name: llmsearch_app
     build: .
-    command: sh -c "bun install && bun run src/index.ts --watch --inspect=0.0.0.0:9229"
+    # 依存はビルド時にインストール済み
+    command: bun run src/index.ts --watch --inspect=0.0.0.0:9229
     working_dir: /app
     volumes:
+      # ホストコードマウント
       - ./:/app:delegated
+      # node_modulesはコンテナボリュームに保持
+      - node_modules:/app/node_modules
     ports:
       - "3000:3000"
       - "9229:9229"
@@ -28,5 +32,22 @@ services:
     stdin_open: true
     tty: true
 
+  client:
+    container_name: deepseekchat_client
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    working_dir: /app
+    volumes:
+      - ./client:/app:delegated
+      - client_node_modules:/app/node_modules
+    ports:
+      - "8100:8100"
+    depends_on:
+      - app
+    stdin_open: true
+    tty: true
+
 volumes:
   node_modules:
+  client_node_modules:
